@@ -6,7 +6,7 @@ import "../assets/Dashboard.scss";
 const Dashboard = () => {
   return (
     <div id="Dashboard">
-      <h2>AQI Location Viewer</h2>
+      <h1>AQI Location Viewer</h1>
       <Navbar />
       <DetailsCard />
     </div>

@@ -4,4 +4,10 @@
   align-items: center;
   height: 100vh;
   padding: 5vh 0 0 0;
+  background-color: #a2c1b0;
+
+  h1 {
+    color: rgb(224, 230, 221);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
 }
