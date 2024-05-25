@@ -2,8 +2,11 @@
   display:flex;
   width: 100vw;
   justify-content: space-evenly;
-  padding: 0;
-  
+  padding: 10px 0 10px 0;
+  border: solid;
+  border-left:none;
+  border-right:none;
+
   .navbar-item{
     display:inline;
   }
