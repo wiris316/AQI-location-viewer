@@ -1,11 +1,11 @@
 import express from 'express';
-import aqiRouter from './routes/aqiRouter';
+import locationRouter from './routes/locationRouter';
 
 const app = express();
 var PORT = 5000;
 // app.use(json());
 // app.use(urlencoded({ extended: true }));
-app.use('/aqi', aqiRouter);
+app.use('/location', locationRouter);
 app.get('/', function (_req, res) {
     res.status(200).send('in root route');
 });
