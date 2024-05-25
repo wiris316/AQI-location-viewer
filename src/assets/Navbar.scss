@@ -1,0 +1,10 @@
+#navbar-list{
+  display:flex;
+  width: 100vw;
+  justify-content: space-evenly;
+  padding: 0;
+  
+  .navbar-item{
+    display:inline;
+  }
+}
