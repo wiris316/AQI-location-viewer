@@ -11,13 +11,13 @@ interface ILocationDetails {
 }
 
 const Dashboard = () => {
-  const [locationDetails, setLocationDetails] = useState<ILocationDetails>({ city: '', aqi: 0, lastUpdated: new Date(), category: '' });
-  
+  const [locationDetails, setLocationDetails] = useState<ILocationDetails>({ city: '', aqi: -Infinity, lastUpdated: new Date(), category: '' });
+
   return (
     <div id="Dashboard">
       <h1>AQI Location Viewer</h1>
       <Navbar locationDetails={locationDetails} setLocationDetails={setLocationDetails} />
-      <DetailsCard />
+      <DetailsCard locationDetails={locationDetails} setLocationDetails={setLocationDetails}/>
     </div>
   )
 }
