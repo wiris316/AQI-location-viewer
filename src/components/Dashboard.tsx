@@ -87,11 +87,12 @@ const Dashboard = () => {
     <div id="Dashboard">
       <h1>AQI Location Viewer</h1>
       <Navbar setSelectedLocation={setSelectedLocation} />
-      <button onClick={handleRefresh}>Refresh</button>
-      <DetailsCard
-        locationDetails={locationDetails}
-        setLocationDetails={setLocationDetails}
-      />
+      <span>
+        <button id="refresh" onClick={handleRefresh}>Refresh</button>
+        <DetailsCard
+          locationDetails={locationDetails}
+        />
+      </span>
     </div>
   );
 };

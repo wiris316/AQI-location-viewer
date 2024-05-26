@@ -1,34 +1,36 @@
 import React, { useEffect, SetStateAction } from "react";
-import "../assets/DetailsCard.scss"
+import "../assets/DetailsCard.scss";
 
 interface ILocationDetails {
-  city: string, 
-  aqi: number, 
-  lastUpdated: string,
-  category: string
+  city: string;
+  aqi: number;
+  lastUpdated: string;
+  category: string;
 }
 
 interface DetailsCardProps {
-  locationDetails: ILocationDetails,
-  setLocationDetails: React.Dispatch<SetStateAction<ILocationDetails>>,
+  locationDetails: ILocationDetails;
 }
 
-const DetailsCard = ({ locationDetails, setLocationDetails }: DetailsCardProps) => {
-
+const DetailsCard = ({ locationDetails }: DetailsCardProps) => {
   return (
     <div id="DetailsCard">
-      {locationDetails.city ?
-        <span>
-          <p>{(locationDetails.lastUpdated).toString()}</p>
-          <h2>{locationDetails.city}</h2>
-          <p>{locationDetails.aqi}</p>
-          <p>{locationDetails.category}</p>
-        
+      {locationDetails.city ? (
+        <span id="info">
+          <p id="info-lastUpdated">
+            Last Updated: {locationDetails.lastUpdated.toString()}
+          </p>
+          <h2 id="info-city">{locationDetails.city}</h2>
+          <p id="info-category">
+            Category: <strong>{locationDetails.category}</strong>
+          </p>
+          <p id="info-aqi">Air Quality Index: {locationDetails.aqi}</p>
         </span>
-        : 'Loading...'
-      }
+      ) : (
+        "Loading..."
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default DetailsCard;
