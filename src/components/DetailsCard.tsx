@@ -4,7 +4,7 @@ import "../assets/DetailsCard.scss"
 interface ILocationDetails {
   city: string, 
   aqi: number, 
-  lastUpdated: Date,
+  lastUpdated: string,
   category: string
 }
 

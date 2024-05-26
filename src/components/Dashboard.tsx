@@ -6,7 +6,7 @@ import "../assets/Dashboard.scss";
 interface ILocationDetails {
   city: string;
   aqi: number;
-  lastUpdated: Date;
+  lastUpdated: string;
   category: string;
 }
 
@@ -23,10 +23,11 @@ const Dashboard = () => {
   const [locationDetails, setLocationDetails] = useState<ILocationDetails>({
     city: "",
     aqi: -Infinity,
-    lastUpdated: new Date(),
+    lastUpdated: new Date().toLocaleString(),
     category: "",
   });
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [refresh, setRefresh] = useState(false);
 
   async function fetchLocationData(city: string) {
     try {
@@ -66,7 +67,7 @@ const Dashboard = () => {
         ...locationDetails,
         city: res.city.name,
         aqi: res.aqi,
-        lastUpdated: new Date(),
+        lastUpdated: new Date().toLocaleString(),
         category: category,
       });
     } catch (error) {
@@ -76,14 +77,17 @@ const Dashboard = () => {
 
   useEffect(() => {
     showLocationData();
-  }, [selectedLocation]);
+  }, [selectedLocation, refresh]);
+
+  const handleRefresh = () => {
+    setRefresh(!refresh);
+  };
 
   return (
     <div id="Dashboard">
       <h1>AQI Location Viewer</h1>
-      <Navbar
-        setSelectedLocation={setSelectedLocation}
-      />
+      <Navbar setSelectedLocation={setSelectedLocation} />
+      <button onClick={handleRefresh}>Refresh</button>
       <DetailsCard
         locationDetails={locationDetails}
         setLocationDetails={setLocationDetails}
