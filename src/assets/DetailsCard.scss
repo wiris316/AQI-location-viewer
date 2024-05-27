@@ -42,3 +42,16 @@
   }
 
 }
+
+@media only screen and (max-width: 1000px) {
+  #DetailsCard{
+    width: fit-content;
+  }
+
+  #info{
+    .face-icon{
+      font-size: 10rem !important;
+      background-color: yellow;
+    }
+  }
+}

@@ -12,8 +12,12 @@
 
   #Dashboard-content {
     display: flex;
+
     #refresh {
-      float: inline-start;
+      float: inline-end;
+      background-color: rgb(220, 222, 221);
+      margin:1px;
+      border-radius: 19px;
     }
   }
 }

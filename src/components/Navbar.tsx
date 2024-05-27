@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import React, { MouseEvent, SetStateAction, useState } from "react";
 import "../assets/Navbar.scss";
 
 interface NavbarProps {
@@ -8,34 +8,40 @@ interface NavbarProps {
 const Navbar = ({
   setSelectedLocation,
 }: NavbarProps) => {
+  const [active, setActive] = useState(0)
+
+  const handleClick = (item: number, e: MouseEvent<HTMLLIElement>) => {
+    setSelectedLocation(e.currentTarget.id);
+    setActive(item)
+  }
   return (
     <nav>
       <ul id="navbar-list">
         <li
-          className="navbar-item"
+          className={active === 0? "navbar-item-active" : "navbar-item"}
           id="here"
-          onClick={(e) => setSelectedLocation(e.currentTarget.id)}
+          onClick={(e) => handleClick(0, e)}
         >
           Local Area
         </li>
         <li
-          className="navbar-item"
+          className={active === 1? "navbar-item-active" : "navbar-item"}
           id="seoul"
-          onClick={(e) => setSelectedLocation(e.currentTarget.id)}
+          onClick={(e) => handleClick(1, e)}
         >
           Seoul
         </li>
         <li
-          className="navbar-item"
+          className={active === 2? "navbar-item-active" : "navbar-item"}
           id="Dubai"
-          onClick={(e) => setSelectedLocation(e.currentTarget.id)}
+          onClick={(e) => handleClick(2, e)}
         >
           Dubai
         </li>
         <li
-          className="navbar-item"
+          className={active === 3? "navbar-item-active" : "navbar-item"}
           id="Dehli"
-          onClick={(e) => setSelectedLocation(e.currentTarget.id)}
+          onClick={(e) => handleClick(3, e)}
         >
           Dehli
         </li>
