@@ -13,7 +13,7 @@ interface ILocationDetails {
 
 const AQICNscale = {
   Good: { aqi: 50, color: "green" },
-  Moderate: { aqi: 100, color: "yellow" },
+  Moderate: { aqi: 100, color: "#FFCC00" },
   "Unhealthy for Sensitive Groups": { aqi: 150, color: "orange" },
   Unhealthy: { aqi: 200, color: "red" },
   "Very Unhealthy": { aqi: 300, color: "purple" },

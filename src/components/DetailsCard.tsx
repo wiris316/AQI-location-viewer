@@ -46,15 +46,17 @@ const DetailsCard = ({ locationDetails }: DetailsCardProps) => {
     <div id="DetailsCard">
       {locationDetails.city ? (
         <span id="info">
-          <p id="info-lastUpdated">
-            Last Updated: {locationDetails.lastUpdated.toString()}
-          </p>
-          <h2 id="info-city">{locationDetails.city}</h2>
-          <p id="info-category">
-            Category: <strong>{locationDetails.category}</strong>
-          </p>
-          <p id="info-aqi">Air Quality Index: {locationDetails.aqi}</p>
+            <p id="info-lastUpdated">
+              Last Updated: {locationDetails.lastUpdated.toString()}
+            </p>
+          <section id="info-section">
+            <h2 id="info-city">{locationDetails.city}</h2>
+            <p id="info-category">
+              Category: <strong>{locationDetails.category}</strong>
+            </p>
+            <p id="info-aqi">Air Quality Index: {locationDetails.aqi}</p>
           {faceIcon[`${locationDetails.category}`]}
+          </section>
         </span>
       ) : (
         "Loading..."

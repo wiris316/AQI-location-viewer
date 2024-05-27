@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   width: 100vw;
 
   h1 {
@@ -16,7 +15,7 @@
     #refresh {
       float: inline-end;
       background-color: rgb(220, 222, 221);
-      margin:1px;
+      margin: 1px;
       border-radius: 19px;
     }
   }
