@@ -1,12 +1,12 @@
 #navbar-list{
-  display:flex;
-  width: 100vw;
+  display:grid;
+  width: max-content;
+  height: 30%;
   justify-content: space-evenly;
-  padding: 10px 0 10px 0;
-  border: solid;
-  border-left:none;
-  border-right:none;
-  background-color: rgb(224, 230, 221);
+  padding: 10px 20px 10px 20px;
+  margin: 0;
+  border-radius: 10px 0 0 10px;
+  background-color: rgb(220, 222, 221);
 
   .navbar-item{
     display:inline;
