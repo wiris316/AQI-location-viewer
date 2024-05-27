@@ -11,9 +11,13 @@ interface ILocationDetails {
   color: string;
 }
 
+interface IAllLocationDetails {
+  [city: string]: ILocationDetails;
+}
+
 const AQICNscale = {
   Good: { aqi: 50, color: "green" },
-  Moderate: { aqi: 100, color: "#FFCC00" },
+  Moderate: { aqi: 100, color: "#349e28" },
   "Unhealthy for Sensitive Groups": { aqi: 150, color: "orange" },
   Unhealthy: { aqi: 200, color: "red" },
   "Very Unhealthy": { aqi: 300, color: "purple" },
@@ -21,14 +25,17 @@ const AQICNscale = {
 };
 
 const Dashboard = () => {
+  const [allLocationDetails, setAllLocationDetails] = useState(
+    {} as IAllLocationDetails
+  );
   const [locationDetails, setLocationDetails] = useState<ILocationDetails>({
-    city: "",
+    city: "here",
     aqi: -Infinity,
     lastUpdated: new Date().toLocaleString(),
     category: "",
-    color:"",
+    color: "",
   });
-  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState<string>("here");
   const [refresh, setRefresh] = useState(false);
 
   async function fetchLocationData(city: string) {
@@ -53,39 +60,52 @@ const Dashboard = () => {
   }
 
   const showLocationData = useCallback(async () => {
-    try {
-      const res = await fetchLocationData(
-        selectedLocation ? selectedLocation : "here"
-      );
-      let category = "";
-      let color = "";
-      for (const [key, val] of Object.entries(AQICNscale)) {
-        if (val.aqi >= res.aqi) {
-          category = key;
-          color = val.color;
-          break;
-        }
-      }
-
+    if (allLocationDetails[selectedLocation] && !refresh) {
       setLocationDetails({
         ...locationDetails,
-        city: res.city.name,
-        aqi: res.aqi,
-        lastUpdated: new Date().toLocaleString(),
-        category: category,
-        color: color,
+        city: allLocationDetails[selectedLocation].city,
+        aqi: allLocationDetails[selectedLocation].aqi,
+        category: allLocationDetails[selectedLocation].category,
+        color: allLocationDetails[selectedLocation].color,
       });
-    } catch (error) {
-      console.error(error);
+    } else {
+      try {
+        const res = await fetchLocationData(selectedLocation);
+        let category = "";
+        let color = "";
+        for (const [key, val] of Object.entries(AQICNscale)) {
+          if (val.aqi >= res.aqi) {
+            category = key;
+            color = val.color;
+            break;
+          }
+        }
+        const data = {
+          ...locationDetails,
+          city: res.city.name,
+          aqi: res.aqi,
+          lastUpdated: new Date().toLocaleString(),
+          category: category,
+          color: color,
+        };
+        setLocationDetails(data);
+        setAllLocationDetails({
+          ...allLocationDetails,
+          [selectedLocation]: data,
+        });
+        setRefresh(false);
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }, [selectedLocation]);
+  }, [selectedLocation, refresh]);
 
   useEffect(() => {
     showLocationData();
   }, [selectedLocation, refresh]);
 
   const handleRefresh = () => {
-    setRefresh(!refresh);
+    setRefresh(true);
   };
 
   return (
@@ -94,12 +114,15 @@ const Dashboard = () => {
       <span id="Dashboard-content">
         <Navbar setSelectedLocation={setSelectedLocation} />
         <span>
-          <button id="refresh" onClick={handleRefresh}>Refresh</button>
+          <button id="refresh" onClick={handleRefresh}>
+            Refresh
+          </button>
           <DetailsCard
             locationDetails={locationDetails}
+            allLocationDetails={allLocationDetails}
+            selectedLocation={selectedLocation}
           />
         </span>
-
       </span>
     </div>
   );
