@@ -8,6 +8,7 @@ interface ILocationDetails {
   aqi: number;
   lastUpdated: string;
   category: string;
+  color: string;
 }
 
 const AQICNscale = {
@@ -25,6 +26,7 @@ const Dashboard = () => {
     aqi: -Infinity,
     lastUpdated: new Date().toLocaleString(),
     category: "",
+    color:"",
   });
   const [selectedLocation, setSelectedLocation] = useState("");
   const [refresh, setRefresh] = useState(false);
@@ -56,9 +58,11 @@ const Dashboard = () => {
         selectedLocation ? selectedLocation : "here"
       );
       let category = "";
+      let color = "";
       for (const [key, val] of Object.entries(AQICNscale)) {
         if (val.aqi >= res.aqi) {
           category = key;
+          color = val.color;
           break;
         }
       }
@@ -69,6 +73,7 @@ const Dashboard = () => {
         aqi: res.aqi,
         lastUpdated: new Date().toLocaleString(),
         category: category,
+        color: color,
       });
     } catch (error) {
       console.error(error);
@@ -86,12 +91,15 @@ const Dashboard = () => {
   return (
     <div id="Dashboard">
       <h1>AQI Location Viewer</h1>
-      <Navbar setSelectedLocation={setSelectedLocation} />
-      <span>
-        <button id="refresh" onClick={handleRefresh}>Refresh</button>
-        <DetailsCard
-          locationDetails={locationDetails}
-        />
+      <span id="Dashboard-content">
+        <Navbar setSelectedLocation={setSelectedLocation} />
+        <span>
+          <button id="refresh" onClick={handleRefresh}>Refresh</button>
+          <DetailsCard
+            locationDetails={locationDetails}
+          />
+        </span>
+
       </span>
     </div>
   );
