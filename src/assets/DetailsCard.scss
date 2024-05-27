@@ -1,26 +1,44 @@
 #DetailsCard {
   border: solid;
   border-color: whitesmoke;
-  border-radius: 20px;
-  height: 60vh;
-  width: 60vw;
+  border-radius: 0px 20px 20px 20px;
+  height: fit-content;
+  width: 35vw;
   // background-color: rgba(46, 105, 84, 0.759);
   // background-color: rgba(26, 69, 54, 0.759);
-  background-color: rgba(96, 116, 109, 0.759);
+  // background-color: rgba(96, 116, 109, 0.759);
+  background-color: rgb(252, 255, 254);
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
 
   #info {
-    color: whitesmoke;
+    color: rgba(26, 69, 54, 0.759);
     font-size: larger;
-
+    display: grid;
+    width: 100%;
+    
     #info-city{
-      line-height: 1;
+      margin: 0;
+    }
+
+    #info-category{
+      margin: 0;
+    }
+    
+    #info-aqi{
+      margin: 0;
     }
 
     #info-lastUpdated {
       text-align: right;
-      margin-bottom:3rem;
+    }
+
+    .face-icon {
+      font-size:300px;
+      display:flex;
+      justify-self: center;
+      margin:1.5rem;
     }
   }
+
 }

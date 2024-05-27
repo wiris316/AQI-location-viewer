@@ -1,11 +1,20 @@
-import React, { useEffect, SetStateAction } from "react";
+import React from "react";
 import "../assets/DetailsCard.scss";
+import {
+  FaRegFaceGrin,
+  FaRegFaceSmile,
+  FaRegFaceMeh,
+  FaRegFaceFrown,
+  FaRegFaceGrimace,
+  FaRegFaceTired,
+} from "react-icons/fa6";
 
 interface ILocationDetails {
   city: string;
   aqi: number;
   lastUpdated: string;
   category: string;
+  color: string;
 }
 
 interface DetailsCardProps {
@@ -13,6 +22,26 @@ interface DetailsCardProps {
 }
 
 const DetailsCard = ({ locationDetails }: DetailsCardProps) => {
+  const faceIcon = {
+    ["Good" as string]: (
+      <FaRegFaceGrin className="face-icon" style={{ color: locationDetails.color }} />
+    ),
+    ["Moderate" as string]: (
+      <FaRegFaceSmile className="face-icon" style={{ color: locationDetails.color }} />
+    ),
+    ["Unhealthy for Sensitive Groups" as string]: (
+      <FaRegFaceMeh className="face-icon" style={{ color: locationDetails.color }} />
+    ),
+    ["Unhealthy" as string]: (
+      <FaRegFaceFrown className="face-icon" style={{ color: locationDetails.color }} />
+    ),
+    ["Very Unhealthy" as string]: (
+      <FaRegFaceGrimace className="face-icon" style={{ color: locationDetails.color }} />
+    ),
+    ["Hazardous" as string]: (
+      <FaRegFaceTired className="face-icon" style={{ color: locationDetails.color }} />
+    ),
+  };
   return (
     <div id="DetailsCard">
       {locationDetails.city ? (
@@ -25,6 +54,7 @@ const DetailsCard = ({ locationDetails }: DetailsCardProps) => {
             Category: <strong>{locationDetails.category}</strong>
           </p>
           <p id="info-aqi">Air Quality Index: {locationDetails.aqi}</p>
+          {faceIcon[`${locationDetails.category}`]}
         </span>
       ) : (
         "Loading..."
