@@ -18,9 +18,9 @@ interface IAllLocationDetails {
 
 interface IAQICNScale {
   [key: string]: {
-    aqi: number, 
-    color: string
-  }
+    aqi: number;
+    color: string;
+  };
 }
 
 const AQICNScale: IAQICNScale = {
