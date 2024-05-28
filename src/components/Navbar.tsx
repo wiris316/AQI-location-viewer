@@ -44,7 +44,7 @@ const Navbar = ({
   ]);
 
   useEffect(() => {
-    if (editRef.current && allLocationDetails[newCity]) {
+    if (editRef.current !== null && allLocationDetails[newCity]) {
       const newCityList = [...cityList];
       newCityList[editRef.current] = newCity;
       setCityList(newCityList);
@@ -74,7 +74,6 @@ const Navbar = ({
       cityString.forEach((ele, i) => {
         cityString[i] = ele[0].toUpperCase() + ele.substring(1);
       });
-
       setNewCity(cityString.join(" "));
       setSelectedLocation(cityString.join(" "));
       editRef.current = selectedIndex;
