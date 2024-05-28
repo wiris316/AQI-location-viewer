@@ -1,5 +1,5 @@
 body {
   background-color: #596760;
+  display:flex;
+  justify-content: center;
 }
-
-

@@ -27,7 +27,11 @@ interface DetailsCardProps {
   selectedLocation: string;
 }
 
-const DetailsCard = ({ locationDetails, allLocationDetails, selectedLocation }: DetailsCardProps) => {
+const DetailsCard = ({
+  locationDetails,
+  allLocationDetails,
+  selectedLocation,
+}: DetailsCardProps) => {
   const faceIcon = {
     ["Good" as string]: (
       <FaRegFaceGrin
@@ -73,14 +77,24 @@ const DetailsCard = ({ locationDetails, allLocationDetails, selectedLocation }: 
           <p id="info-lastUpdated">
             Last Updated: {allLocationDetails[selectedLocation]?.lastUpdated}
           </p>
+          <hr id="divider" />
           <section id="info-section">
-            <h2 id="info-city">{locationDetails.city}</h2>
-            <p id="info-category">
-              Category: <strong>{locationDetails.category}</strong>
-            </p>
-            <p id="info-aqi">Air Quality Index: {locationDetails.aqi}</p>
-            {faceIcon[`${locationDetails.category}`]}
+            <span
+              id="info-label-aqi"
+              style={{ borderColor: `${locationDetails.color}` }}
+            >
+              <label id="info-label">AQI:</label>
+              <div id="info-aqi">{locationDetails.aqi}</div>
+            </span>
+            <span id="info-city-category">
+              <h2 id="info-city">{locationDetails.city}</h2>
+              <p id="info-category">
+                Category: <strong>{locationDetails.category}</strong>
+              </p>
+            </span>
           </section>
+          <hr id="divider" />
+          {faceIcon[`${locationDetails.category}`]}
         </span>
       ) : (
         "Loading..."
