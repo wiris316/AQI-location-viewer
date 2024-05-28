@@ -4,6 +4,7 @@
   // background-color: rgba(96, 116, 109, 0.759);
   border-radius: 0px 20px 20px 20px;
   height: fit-content;
+  min-height: 50vh;
   width: 40vw;
   background-color: rgb(244, 246, 245);
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
@@ -16,7 +17,6 @@
     width: 100%;
 
     #info-section {
-      // box-shadow: 20px 20px 100px rgba(122, 132, 122, 0.319);
       background-color: rgba(220, 222, 221, 0.197);
       border-radius: 15px;
       border-color: rgba(210, 210, 210, 0.494);

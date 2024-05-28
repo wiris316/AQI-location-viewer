@@ -5,7 +5,7 @@ import React, {
   useState,
 } from "react";
 import "../assets/Navbar.scss";
-import { FaBars } from "react-icons/fa6";
+import { FaBars, FaLocationDot, FaPencil } from "react-icons/fa6";
 
 interface NavbarProps {
   setSelectedLocation: React.Dispatch<SetStateAction<string>>;
@@ -56,10 +56,11 @@ const Navbar = ({ setSelectedLocation }: NavbarProps) => {
           id="here"
           onClick={(e) => handleClick(-1, e)}
         >
+          <FaLocationDot className="location-icon" />
           Local Area
         </li>
         {cityList.map((city, i) => (
-          <div>
+          <div className="navbar-tab">
             {edit === i ? (
               <input
                 onBlur={() => setEdit(-1)}
@@ -73,7 +74,10 @@ const Navbar = ({ setSelectedLocation }: NavbarProps) => {
                 onClick={(e) => handleClick(i, e)}
               >
                 {city}
-                <button onClick={() => handleEdit(i)}>-</button>
+                <FaPencil
+                  className="edit-icon"
+                  onClick={() => handleEdit(i)}
+                ></FaPencil>
               </li>
             )}
           </div>

@@ -1,4 +1,4 @@
-nav{
+nav {
   border-radius: 20px 0 0 20px;
   background-color: rgb(220, 222, 221);
   height: min-content;
@@ -7,19 +7,39 @@ nav{
     display: grid;
     width: max-content;
     padding: 0;
-  
+
+    .navbar-tab {
+      width: 100%;
+      justify-content: right;
+    }
+
     .navbar-item {
       display: inline;
       font-size: large;
       text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
       padding: 10px;
-  
+      text-align: right;
+
       &:hover {
         cursor: pointer;
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
       }
+
+      .location-icon {
+        font-size: 15px;
+        float: left;
+        height: 100%;
+        padding-right: 6px;
+      }
+
+      .edit-icon {
+        font-size: 20px;
+        float: left;
+        height: 100%;
+        padding: 6px;
+      }
     }
-  
+
     .navbar-item-active {
       color: rgb(12, 6, 6);
       text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
@@ -27,20 +47,37 @@ nav{
       font-size: large;
       list-style-type: none;
       background-color: rgb(244, 246, 245);
-      padding: 10px;
-      
+      padding: 10px 10px 10px 0;
+      display: block;
+      margin: 0;
+
       &:hover {
         cursor: pointer;
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
       }
+
+      .location-icon {
+        font-size: 15px;
+        float: left;
+        height: 100%;
+        padding: 0 6px 0 6px;
+      }
+
+      .edit-icon {
+        font-size: 20px;
+        float: left;
+        background-color: rgb(244, 246, 245);
+        height: 100%;
+        padding: 6px;
+        margin-right: 10px;
+      }
     }
   }
-  
-  .menu-icon{
-    display:flex;
+
+  .menu-icon {
+    display: flex;
     justify-items: end;
     // left:250px;
     // right: 10px;
   }
-
 }
