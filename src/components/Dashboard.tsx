@@ -45,6 +45,7 @@ const Dashboard = () => {
   });
   const [selectedLocation, setSelectedLocation] = useState<string>("here");
   const [refresh, setRefresh] = useState(false);
+  const [locationUpdated, setLocationUpdated] = useState(false);
 
   async function fetchLocationData(city: string) {
     try {
@@ -57,8 +58,10 @@ const Dashboard = () => {
       if (res.status === 200) {
         const data = await res.json();
         if (data.status !== "error") {
+          setLocationUpdated(!locationUpdated);
           return data.data;
         } else {
+          window.alert('Please enter a valid city name')
           throw new Error(`Error: ${data.data}`);
         }
       }
@@ -121,7 +124,7 @@ const Dashboard = () => {
       <h1>AQI Location Viewer</h1>
       <span id="Dasboard-content-legend">
         <section id="Dashboard-content">
-          <Navbar setSelectedLocation={setSelectedLocation} />
+          <Navbar setSelectedLocation={setSelectedLocation} locationUpdated={locationUpdated} allLocationDetails={allLocationDetails} />
           <span>
             <button id="refresh" onClick={handleRefresh}>
               Refresh

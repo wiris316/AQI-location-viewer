@@ -11,6 +11,11 @@ nav {
     .navbar-tab {
       width: 100%;
       justify-content: right;
+
+      .input-box{
+        width: 130px;
+        padding: 10px;
+      }
     }
 
     .navbar-item {
