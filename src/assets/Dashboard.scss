@@ -7,21 +7,33 @@
   h1 {
     color: rgb(224, 230, 221);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
   }
-  
-  #Dashboard-content {
+
+  #Dasboard-content-legend {
     display: flex;
-    
-    #refresh {
-      float: inline-end;
-      background-color: rgb(220, 222, 221);
-      margin: 1px;
-      border-radius: 19px;
-      
-      &:hover{
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+    #Dashboard-content {
+      display: flex;
+
+      #refresh {
+        float: inline-end;
+        background-color: rgb(220, 222, 221);
+        margin: 1px;
+        border-radius: 19px;
         border: none;
+
+        &:hover {
+          text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #Dasboard-content-legend {      
+    flex-direction: column;
+    align-items: center;
   }
 }

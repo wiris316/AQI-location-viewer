@@ -1,0 +1,45 @@
+#legend{ 
+  width: min-content;
+  position: relative;
+  width:20%;
+  color:rgb(244, 246, 245);
+  margin-left: 5vw;
+  margin-right: -20vw;
+  
+  .legend-info{
+    display:flex;
+    padding:0;
+    margin:0; 
+
+    .legend-category {
+      margin: 5px 0 5px 10px;
+      padding-top: 10px;
+    }
+
+    .legend-color-code{
+      border:solid rgba(244, 246, 245, 0.225);
+      width: 5px; 
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #legend{
+    width:100%;
+    display:flex;
+    height:min-content;
+    justify-content: space-evenly;
+    margin: 5vh 0;
+    flex-wrap:wrap;
+
+    .legend-category{
+      padding: 0px !important;
+      margin: 0 0 0 5px !important;
+    }
+
+    .legend-color-code{
+      height: 20px;
+      margin-left: 20px; 
+    }
+  }
+}

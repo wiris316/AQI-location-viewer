@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import DetailsCard from "./DetailsCard";
 import Navbar from "./Navbar";
+import AQIScaleLegend from "./AQIScaleLegend";
 import "../assets/Dashboard.scss";
 
 interface ILocationDetails {
@@ -15,7 +16,14 @@ interface IAllLocationDetails {
   [city: string]: ILocationDetails;
 }
 
-const AQICNscale = {
+interface IAQICNScale {
+  [key: string]: {
+    aqi: number, 
+    color: string
+  }
+}
+
+const AQICNScale: IAQICNScale = {
   Good: { aqi: 50, color: "green" },
   Moderate: { aqi: 100, color: "#349e28" },
   "Unhealthy for Sensitive Groups": { aqi: 150, color: "orange" },
@@ -73,7 +81,7 @@ const Dashboard = () => {
         const res = await fetchLocationData(selectedLocation);
         let category = "";
         let color = "";
-        for (const [key, val] of Object.entries(AQICNscale)) {
+        for (const [key, val] of Object.entries(AQICNScale)) {
           if (val.aqi >= res.aqi) {
             category = key;
             color = val.color;
@@ -111,18 +119,21 @@ const Dashboard = () => {
   return (
     <div id="Dashboard">
       <h1>AQI Location Viewer</h1>
-      <span id="Dashboard-content">
-        <Navbar setSelectedLocation={setSelectedLocation} />
-        <span>
-          <button id="refresh" onClick={handleRefresh}>
-            Refresh
-          </button>
-          <DetailsCard
-            locationDetails={locationDetails}
-            allLocationDetails={allLocationDetails}
-            selectedLocation={selectedLocation}
-          />
-        </span>
+      <span id="Dasboard-content-legend">
+        <section id="Dashboard-content">
+          <Navbar setSelectedLocation={setSelectedLocation} />
+          <span>
+            <button id="refresh" onClick={handleRefresh}>
+              Refresh
+            </button>
+            <DetailsCard
+              locationDetails={locationDetails}
+              allLocationDetails={allLocationDetails}
+              selectedLocation={selectedLocation}
+            />
+          </span>
+        </section>
+        <AQIScaleLegend AQICNScale={AQICNScale} />
       </span>
     </div>
   );

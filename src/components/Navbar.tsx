@@ -28,10 +28,10 @@ const Navbar = ({ setSelectedLocation }: NavbarProps) => {
           </li>
           <li
             className={active === 1 ? "navbar-item-active" : "navbar-item"}
-            id="seoul"
+            id="malaysia"
             onClick={(e) => handleClick(1, e)}
           >
-            Seoul
+            Malaysia
           </li>
           <li
             className={active === 2 ? "navbar-item-active" : "navbar-item"}
@@ -46,6 +46,13 @@ const Navbar = ({ setSelectedLocation }: NavbarProps) => {
             onClick={(e) => handleClick(3, e)}
           >
             Dehli
+          </li>
+          <li
+            className={active === 4 ? "navbar-item-active" : "navbar-item"}
+            id="jakarta"
+            onClick={(e) => handleClick(4, e)}
+          >
+            Jakarta
           </li>
         </ul>
       {/* )} */}
