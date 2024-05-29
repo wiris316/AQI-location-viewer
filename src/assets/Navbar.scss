@@ -8,11 +8,22 @@ nav {
     width: 180px;
     padding: 0;
 
+    .location-icon {
+      font-size: 15px;
+      float: left;
+      height: 100%;
+      margin-left:5px;
+      margin-right:15px;
+    }
     .navbar-tab {
       width: 100%;
-      justify-content: right;
+      
+      &:hover {
+        cursor: pointer;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+      }
 
-      .input-box{
+      .input-box {
         width: 150px;
         padding: 10px;
         margin: 5px;
@@ -23,19 +34,13 @@ nav {
       display: inline;
       font-size: large;
       text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-      padding: 10px;
+      padding: 0 10px;
 
       &:hover {
         cursor: pointer;
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
       }
 
-      .location-icon {
-        font-size: 15px;
-        float: left;
-        height: 100%;
-        padding-right: 10px;
-      }
 
       .edit-icon {
         font-size: 20px;
@@ -52,7 +57,6 @@ nav {
       font-size: large;
       list-style-type: none;
       background-color: rgb(244, 246, 245);
-      padding: 10px 10px 10px 0;
       display: block;
       margin: 0;
 
@@ -65,7 +69,8 @@ nav {
         font-size: 15px;
         float: left;
         height: 100%;
-        padding: 0 6px 0 6px;
+        margin-left:12px;
+        margin-right:15px;
       }
 
       .edit-icon {
@@ -82,7 +87,78 @@ nav {
   .menu-icon {
     display: flex;
     justify-items: end;
-    // left:250px;
-    // right: 10px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  nav {
+    border-radius: 20px;
+    margin-bottom: 5vh;
+    background-color: transparent;
+
+    #navbar-list {
+      display: flex;
+      width: 100%;
+      font-size: xx-small;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: whitesmoke;
+      border-top: 1px solid black; 
+      border-bottom: 1px solid black;
+      border-left: none;
+      border-right: none;
+
+      .navbar-tab {
+        height: min-content;
+        width: fit-content;
+        padding: 0 10px 0 10px;
+      }
+
+      .navbar-item {
+        height: min-content;
+        padding: 0;
+      }
+
+      .location-icon {
+        font-size: medium;
+        margin-top: 5px;
+      }
+
+      .navbar-item-active {
+        height: min-content;
+        border-radius: 20px;
+
+        .edit-icon {
+          border-radius: 20px;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #navbar-list {
+    .navbar-item {
+      font-size: small !important;
+    }
+
+    .navbar-item-active {
+      font-size: small !important;
+    }
+
+    .edit-icon {
+      font-size: x-small !important;
+      padding: 0 !important;
+    }
+
+    .location-icon {
+      font-size: small !important;
+    }
+
+    .input-box {
+      width: 90px !important;
+      padding: 0 !important;
+    }
   }
 }

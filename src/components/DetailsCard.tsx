@@ -79,12 +79,16 @@ const DetailsCard = ({
           </p>
           <hr id="divider" />
           <section id="info-section">
-            <span
-              id="info-label-aqi"
-              style={{ borderColor: `${locationDetails.color}` }}
-            >
+            <span id="info-label-aqi">
               <label id="info-label">AQI:</label>
-              <div id="info-aqi">{locationDetails.aqi}</div>
+              <div
+                id="info-aqi"
+                style={{ color: `${locationDetails.color}` }}
+              >
+                <strong>
+                {locationDetails.aqi}
+                </strong>
+              </div>
             </span>
             <span id="info-city-category">
               <h2 id="info-city">{locationDetails.city}</h2>
