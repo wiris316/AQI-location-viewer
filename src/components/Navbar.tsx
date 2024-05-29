@@ -8,18 +8,8 @@ import React, {
 } from "react";
 import "../assets/Navbar.scss";
 import { FaBars, FaLocationDot, FaPencil } from "react-icons/fa6";
+import { IAllLocationDetails } from "../interfaces";
 
-interface ILocationDetails {
-  city: string;
-  aqi: number;
-  lastUpdated: string;
-  category: string;
-  color: string;
-}
-
-interface IAllLocationDetails {
-  [city: string]: ILocationDetails;
-}
 interface NavbarProps {
   setSelectedLocation: React.Dispatch<SetStateAction<string>>;
   locationUpdated: boolean;

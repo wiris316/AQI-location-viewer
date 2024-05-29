@@ -1,12 +1,6 @@
 import React from "react";
 import "../assets/AQIScaleLegend.scss";
-
-interface IAQICNScale {
-  [key: string]: {
-    aqi: number;
-    color: string;
-  };
-}
+import { IAQICNScale } from "../interfaces";
 
 const AQIScaleLegend = ({ AQICNScale }: { AQICNScale: IAQICNScale }) => {
   return (

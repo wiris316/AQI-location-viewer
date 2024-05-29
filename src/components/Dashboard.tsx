@@ -3,25 +3,11 @@ import DetailsCard from "./DetailsCard";
 import Navbar from "./Navbar";
 import AQIScaleLegend from "./AQIScaleLegend";
 import "../assets/Dashboard.scss";
-
-interface ILocationDetails {
-  city: string;
-  aqi: number;
-  lastUpdated: string;
-  category: string;
-  color: string;
-}
-
-interface IAllLocationDetails {
-  [city: string]: ILocationDetails;
-}
-
-interface IAQICNScale {
-  [key: string]: {
-    aqi: number;
-    color: string;
-  };
-}
+import {
+  ILocationDetails,
+  IAllLocationDetails,
+  IAQICNScale,
+} from "../interfaces";
 
 const AQICNScale: IAQICNScale = {
   Good: { aqi: 50, color: "green" },

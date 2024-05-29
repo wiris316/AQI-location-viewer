@@ -8,18 +8,7 @@ import {
   FaRegFaceGrimace,
   FaRegFaceTired,
 } from "react-icons/fa6";
-
-interface ILocationDetails {
-  city: string;
-  aqi: number;
-  lastUpdated: string;
-  category: string;
-  color: string;
-}
-
-interface IAllLocationDetails {
-  [city: string]: ILocationDetails;
-}
+import { ILocationDetails, IAllLocationDetails } from "../interfaces";
 
 interface DetailsCardProps {
   locationDetails: ILocationDetails;
@@ -81,13 +70,8 @@ const DetailsCard = ({
           <section id="info-section">
             <span id="info-label-aqi">
               <label id="info-label">AQI:</label>
-              <div
-                id="info-aqi"
-                style={{ color: `${locationDetails.color}` }}
-              >
-                <strong>
-                {locationDetails.aqi}
-                </strong>
+              <div id="info-aqi" style={{ color: `${locationDetails.color}` }}>
+                <strong>{locationDetails.aqi}</strong>
               </div>
             </span>
             <span id="info-city-category">
